@@ -21,7 +21,25 @@ Understanding potential customer attrition helps teams prioritize retention inve
 
 ## System architecture
 
-![Customer Churn Prediction system architecture](docs/architecture-overview.svg)
+```mermaid
+flowchart LR
+    Source[("churn_prediction_simple.csv")]
+
+    subgraph Notebook["Churn_Prediction.ipynb"]
+        Inspect["Schema, missing values, distributions"]
+        EDA["Customer, balance, and transaction EDA"]
+        Prepare["Identifier removal<br/>encoding • imputation • derived time features"]
+        Split["Train / test split"]
+        Baselines["Logistic-regression experiments"]
+        Review["Charts and model comparison"]
+    end
+
+    Source --> Inspect
+    Inspect --> EDA
+    Inspect --> Prepare
+    EDA --> Review
+    Prepare --> Split --> Baselines --> Review
+```
 
 ### How the workflow operates
 
