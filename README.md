@@ -1,39 +1,61 @@
-<p align="center"><img src="docs/assets/banner.svg" alt="Churn Prediction — Turn account activity into retention signals." width="100%"></p>
+# Customer Churn Prediction
 
-<p align="center"><img src="docs/assets/badges/python.svg" alt="python" height="28"> <img src="docs/assets/badges/pandas.svg" alt="pandas" height="28"> <img src="docs/assets/badges/scikit-learn.svg" alt="scikit-learn" height="28"> <img src="docs/assets/badges/jupyter.svg" alt="jupyter" height="28"></p>
-
-<p align="center"><strong>An exploratory notebook for understanding customer churn through tabular analysis, visualization, and logistic-regression baselines.</strong></p>
+**Customer retention analysis with machine learning**
 
 ## Overview
 
-An exploratory notebook for understanding customer churn through tabular analysis, visualization, and logistic-regression baselines.
+This repository explores customer-churn prediction using structured account and activity data. A Jupyter notebook guides the reader through exploratory analysis, feature preparation, and logistic-regression modeling to identify patterns associated with customers leaving a service.
 
 ### Why it matters
 
-The project shows how customer attributes and activity patterns can be shaped into a clear analytical workflow for retention-focused questions.
+Understanding potential customer attrition helps teams prioritize retention investigation. The project demonstrates how raw customer records can be transformed into structured features and used in a supervised classification workflow.
 
-## Key features
+## Key capabilities
 
-- Customer and transaction exploratory analysis
-- Missing-value handling and categorical encoding
-- Derived account-activity features
-- Logistic-regression baseline experiments
+- Loads a tabular customer dataset for exploratory analysis.
+- Examines customer and account attributes associated with churn.
+- Prepares numerical and categorical features for modeling.
+- Uses logistic regression as an interpretable classification baseline.
+- Keeps analysis and model experimentation in a Jupyter notebook.
+- Provides a sample CSV alongside the notebook.
 
-## Architecture
+## System architecture
 
-```mermaid
-flowchart LR
-  A[Customer CSV] --> B[Exploration]
-  B --> C[Feature preparation]
-  C --> D[Train / test split]
-  D --> E[Logistic regression]
-  E --> F[Model review]
-```
+![Customer Churn Prediction system architecture](docs/architecture-overview.svg)
+
+### How the workflow operates
+
+The workflow starts with the repository CSV and explores its columns before transforming fields into model-ready inputs. Data preparation and logistic-regression modeling take place in the notebook, with visual and tabular output used to inspect the analysis.
+
+This is an exploratory machine-learning project rather than a deployed customer-retention service.
 
 ## Technology stack
 
-**python** · **pandas** · **scikit learn** · **jupyter**
+| Technology | Purpose |
+| --- | --- |
+| **Python** | Notebook analysis and modeling |
+| **pandas / NumPy** | Data loading and manipulation |
+| **scikit-learn** | Preprocessing and logistic regression |
+| **Jupyter Notebook** | Exploration and documentation |
+| **Matplotlib / seaborn** | Exploratory visualization, where used |
+
+## Repository structure
+
+```text
+Churn_Prediction.ipynb   Main analysis notebook
+churn_prediction_simple.csv  Local demonstration dataset
+README.md                Project overview and instructions
+```
 
 ## Getting started
 
-Open `Churn_Prediction.ipynb` in a compatible Jupyter environment with the repository CSV available in the working directory. Run cells in order after reviewing the preprocessing choices.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install notebook pandas numpy scikit-learn matplotlib seaborn
+jupyter notebook Churn_Prediction.ipynb
+```
+
+## Notes and prerequisites
+
+Use the accompanying CSV in the working directory. The repository is an analysis exercise; it does not implement a live customer scoring API or business retention workflow.
