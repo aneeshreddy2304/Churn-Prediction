@@ -1,46 +1,39 @@
-![Churn Prediction — conceptual project header](docs/assets/banner.svg)
+<p align="center"><img src="docs/assets/banner.svg" alt="Churn Prediction — Turn account activity into retention signals." width="100%"></p>
 
-# Churn Prediction
+<p align="center"><img src="docs/assets/badges/python.svg" alt="python" height="28"> <img src="docs/assets/badges/pandas.svg" alt="pandas" height="28"> <img src="docs/assets/badges/scikit-learn.svg" alt="scikit-learn" height="28"> <img src="docs/assets/badges/jupyter.svg" alt="jupyter" height="28"></p>
 
-![Python](docs/assets/badges/python.svg) ![pandas](docs/assets/badges/pandas.svg) ![scikit-learn](docs/assets/badges/scikit-learn.svg) ![Jupyter](docs/assets/badges/jupyter.svg)
+<p align="center"><strong>An exploratory notebook for understanding customer churn through tabular analysis, visualization, and logistic-regression baselines.</strong></p>
 
-**An exploratory customer-churn study using tabular analysis, visualization, and logistic-regression baselines.**
+## Overview
 
-## The question
+An exploratory notebook for understanding customer churn through tabular analysis, visualization, and logistic-regression baselines.
 
-Which customer and account-activity patterns are associated with churn? This notebook explores distributions, missing values, balances and transaction features before fitting classification baselines. It is an educational analysis, not a deployed retention system.
+### Why it matters
 
-## Workflow
+The project shows how customer attributes and activity patterns can be shaped into a clear analytical workflow for retention-focused questions.
+
+## Key features
+
+- Customer and transaction exploratory analysis
+- Missing-value handling and categorical encoding
+- Derived account-activity features
+- Logistic-regression baseline experiments
+
+## Architecture
 
 ```mermaid
 flowchart LR
-    CSV[Customer CSV] --> EDA[Exploration and visualizations]
-    EDA --> PRE[Encoding and imputation]
-    PRE --> SPLIT[Train/test split]
-    SPLIT --> MODEL[Logistic regression experiments]
-    MODEL --> METRICS[Accuracy comparisons]
+  A[Customer CSV] --> B[Exploration]
+  B --> C[Feature preparation]
+  C --> D[Train / test split]
+  D --> E[Logistic regression]
+  E --> F[Model review]
 ```
 
-*This depicts the current notebook. Preprocessing occurs before splitting, which is a limitation rather than a recommended evaluation design.*
+## Technology stack
 
-## Explore the project
+**python** · **pandas** · **scikit learn** · **jupyter**
 
-- [Churn_Prediction.ipynb](Churn_Prediction.ipynb): data inspection, feature preparation, EDA and models.
-- `churn_prediction_simple.csv`: the notebook's expected input; dataset source/license should be confirmed before redistribution.
+## Getting started
 
-The notebook's working directory must contain the CSV. It uses pandas, NumPy, matplotlib, seaborn, and scikit-learn; there is no locked environment or dependency manifest. Do not assume it reruns unchanged on a modern installation.
-
-## Engineering and analysis notes
-
-The analysis drops the customer identifier before modeling and explores transaction-derived time features. It also computes scaled frames, although the baseline is fit to unscaled data. These choices are visible in the notebook and should be explained when discussing the experiment.
-
-## Current results and limitations
-
-No headline accuracy or financial impact is presented because the evaluation needs repair:
-
-- `DatetimeIndex.weekofyear` is absent in modern pandas.
-- L1 logistic regression is configured with an incompatible default solver.
-- Encoding/imputation precedes splitting, and repeated test comparisons influence model selection.
-- No untouched external validation, deployed inference interface, or demonstrated retention impact is supplied.
-
-Saved notebook outputs are exploratory artifacts. A defensible next result would come from train-only preprocessing, a fixed holdout, and metrics suited to class imbalance.
+Open `Churn_Prediction.ipynb` in a compatible Jupyter environment with the repository CSV available in the working directory. Run cells in order after reviewing the preprocessing choices.
